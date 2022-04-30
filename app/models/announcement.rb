@@ -4,6 +4,7 @@ class Announcement < ApplicationRecord
   
   belongs_to :user
   belongs_to :car
+  has_many   :favorites
   has_many   :posts, as: :postable
 end
 

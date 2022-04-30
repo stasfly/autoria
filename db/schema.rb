@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_135023) do
+ActiveRecord::Schema.define(version: 2022_04_30_154042) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer "user_id"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2022_04_30_135023) do
     t.index ["engine"], name: "index_cars_on_engine"
     t.index ["model"], name: "index_cars_on_model"
     t.index ["vehicle_type"], name: "index_cars_on_vehicle_type"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "announcement_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["announcement_id"], name: "index_favorites_on_announcement_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "news", force: :cascade do |t|
