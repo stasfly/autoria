@@ -67,4 +67,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :telephone, :status, :password)
     end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless current_user?(@user)
+    end
+
+    def check_if_admin
+      redirect_to root_url unless current_user.admin?
+    end
 end
