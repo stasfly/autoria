@@ -57,7 +57,7 @@
   </div>
   
   <span class="image">
-    <%= form.file_field :image %>
+    <%= form.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" %>
   </span>
   
   <div class="actions">

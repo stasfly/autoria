@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Purpose</th>
       <th>Location</th>
       <th>Rating</th>
@@ -18,6 +19,12 @@
   <tbody>
     <% @announcements.each do |announcement| %>
       <tr>
+        <td>
+          <% if @cars.find(announcement.car_id).images.attached? %>
+            <% car_img = @cars.find(announcement.car_id).images.first %>
+            <%= image_tag(car_img.variant(resize_to_limit: [100, 50])) %>
+          <% end %>
+        </td>
         <td><%= announcement.purpose %></td>
         <td><%= announcement.location %></td>
         <td><%= announcement.rating %></td>

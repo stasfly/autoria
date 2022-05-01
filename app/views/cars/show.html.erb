@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <%= image_tag @car.image if @car.image.attached? %>
+  <% if @car.images.attached? %>
+    <% @car.images.each do |img| %>
+      <%= image_tag(img.variant(resize_to_limit: [300, 300])) %>
+    <% end %>
+  <% end %>
 </p>
 <p>
   <strong>Brand:</strong>

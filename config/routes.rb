@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'announcements#index'
   resources :posts
   resources :news
   resources :cars

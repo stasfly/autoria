@@ -34,7 +34,13 @@
 <%= link_to 'Back', announcements_path %>
 
 <hr>
-
+<p>
+  <% if @car.images.attached? %>
+    <% @car.images.each do |img| %>
+      <%= image_tag(img.variant(resize_to_limit: [300, 300])) %>
+    <% end %>
+  <% end %>
+</p>
 <p>
   <strong>Brand:</strong>
   <%= @car.brand %>
@@ -76,3 +82,4 @@
   <strong>Price:</strong>
   <%= @car.price %>$
 </p>
+<%= link_to 'Edit', edit_car_path(@car) %>
