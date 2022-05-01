@@ -8,6 +8,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/1 or /announcements/1.json
   def show
+    @car = Car.find(@announcement.car_id)
   end
 
   # GET /announcements/new

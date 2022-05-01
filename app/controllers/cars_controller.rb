@@ -22,7 +22,7 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.new(car_params)
-
+    @car.image.attach(params[:car][:image])
     respond_to do |format|
       if @car.save
         format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
@@ -65,6 +65,7 @@ class CarsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def car_params
-      params.require(:car).permit(:brand, :model)
+      params.require(:car).permit(:brand, :model, :age, :engine, :color, 
+            :vehicle_type, :description, :condition, :price, :image, :video)
     end
 end

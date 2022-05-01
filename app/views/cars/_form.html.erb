@@ -20,7 +20,46 @@
     <%= form.label :model %>
     <%= form.text_field :model %>
   </div>
-
+  
+  <div class="field">
+    <%= form.label :age, "Year" %>
+    <%= form.text_field :age %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :engine %>
+    <%= form.text_field :engine %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :vehicle_type %>
+    <%= form.text_field :vehicle_type %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :condition %>
+    <%= form.text_field :condition %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+  
+  <span class="image">
+    <%= form.file_field :image %>
+  </span>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
