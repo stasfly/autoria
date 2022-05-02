@@ -23,7 +23,7 @@ class CarsController < ApplicationController
   # POST /cars or /cars.json
   def create
     @car = Car.new(car_params)
-    @car.images.attach(params[:car][:image])
+    @car.images.attach(params[:car][:images])
     respond_to do |format|
       if @car.save
         #format.html { redirect_to car_url(@car), notice: "Car was successfully created." }

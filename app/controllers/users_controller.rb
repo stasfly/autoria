@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @announcement_collection = Announcement.where(user_id: current_user.id).order("created_at")
   end
 
   # GET /users/new
