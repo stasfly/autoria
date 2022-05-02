@@ -24,7 +24,8 @@ class AnnouncementsController < ApplicationController
   # POST /announcements or /announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
-
+    @announcement.car_id  = Car.current.id
+    @announcement.user_id = User.current.id
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully created." }

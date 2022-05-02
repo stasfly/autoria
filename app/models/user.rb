@@ -18,6 +18,15 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  #set current user (somewhere in Users controller)
+  def self.current=(user)
+    @current_user = user
+  end
+  # retrives current user for other controllers
+  def self.current
+    @current_user
+  end
+  
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -16,7 +16,13 @@ class Car < ApplicationRecord
   has_one   :announcement
   has_many_attached :images
 
+  def self.current=(car)
+    @current_car = car
+  end
 
+  def self.current
+    @current_car
+  end
   
   
 end
