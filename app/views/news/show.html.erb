@@ -15,7 +15,8 @@
         <%= form_with(model: @post, local: true) do |f| %>
           <div class="field">
             <%= f.text_area :body, placeholder: "Compose new comment..." %>
-            
+            <%= f.hidden_field :postable_type, value: @news.class %>
+            <%= f.hidden_field :postable_id, value: @news.id %>
             <%= f.hidden_field :title, value: @news.title %>
           </div>
           <%= f.submit "Send comment", class: "btn btn-primary" %>
@@ -24,3 +25,11 @@
     </aside>
   </div>
 <% end %>
+<hr>
+<% @news_posts.each do |p| %>
+  <p>
+    <span><%= p.user_id %> | </span>
+    <span><%= p.created_at %> >> </span>
+    <span><%= p.body %></span>
+  </p>
+<% end%>

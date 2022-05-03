@@ -9,7 +9,9 @@ class NewsController < ApplicationController
   # GET /news/1 or /news/1.json
   def show
     @news = News.find(params[:id])
-    @post = @news.posts.build(postable_type: @news, postable_id: @news.id) if logged_in?
+    @post = @news.posts.build() if logged_in?
+    @news_posts = @news.posts
+    puts @news_posts.count
   end
 
   # GET /news/new

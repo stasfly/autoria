@@ -23,7 +23,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = User.current.id
-    #@post.postable_type = 
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -66,6 +65,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :pastable_id, :postable_type)
+      params.require(:post).permit(:title, :body, :postable_id, :postable_type)
     end
 end
