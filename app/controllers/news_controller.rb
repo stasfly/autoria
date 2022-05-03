@@ -22,7 +22,7 @@ class NewsController < ApplicationController
   # POST /news or /news.json
   def create
     @news = News.new(news_params)
-
+    @news.user_id = User.current.id
     respond_to do |format|
       if @news.save
         format.html { redirect_to news_url(@news), notice: "News was successfully created." }

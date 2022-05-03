@@ -2,28 +2,17 @@
 
 <h1>News</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <td><%= news.title %></td>
-        <td><%= news.body %></td>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @news.each do |news| %>
+  <h2><%= news.title %></h2>
+    <p><%= news.body %></p>
+    <span><%= link_to 'Show', news %></span>
+    <% if logged_in? && User.current.status == true %>
+      <span><%= link_to 'Edit', edit_news_path(news) %></span>
+      <span><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      <hr>
     <% end %>
-  </tbody>
-</table>
-
+<% end %>
 <br>
-
-<%= link_to 'New News', new_news_path %>
+<% if logged_in? && User.current.status == true %>
+  <%= link_to 'New News', new_news_path %>
+<% end %>
