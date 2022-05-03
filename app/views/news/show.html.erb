@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @news.title %>
+  <h2><strong><%= @news.title %></strong></h2>
 </p>
 
 <p>
-  <strong>Body:</strong>
   <%= @news.body %>
 </p>
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+<hr>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="micropost_form">
+        <%= form_with(model: @post, local: true) do |f| %>
+          <div class="field">
+            <%= f.text_area :body, placeholder: "Compose new comment..." %>
+            
+            <%= f.hidden_field :title, value: @news.title %>
+          </div>
+          <%= f.submit "Send comment", class: "btn btn-primary" %>
+        <% end %>
+      </section>
+    </aside>
+  </div>
+<% end %>
